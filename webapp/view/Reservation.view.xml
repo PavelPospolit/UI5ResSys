@@ -1,0 +1,53 @@
+<mvc:View xmlns:cards="sap.f.cards" controllerName="reservierungssystem.controller.Reservation" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:m="sap.m">
+    <Toolbar>
+        <Button text="Homepage" press="onNavToHomepage" />
+        <Button text="Reservierung" enabled="false" />
+        <ToolbarSpacer />
+        <Button text="Ausloggen!" type="Reject" press="onLogOut" />
+    </Toolbar>
+
+    <m:FlexBox alignItems="Center" justifyContent="Center">
+        <m:items>
+            <l:BlockLayoutCell id="homaPageTitle" title="Reservierung" titleAlignment="Center" class="sapUiLargeMarginTop">
+                <m:FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                    <m:FlexBox alignItems="Center" justifyContent="Center">
+                        <DatePicker id="dpStart" valueFormat="yyyy-MM-dd" displayFormat="dd.MM.yyyy" placeholder="Start Datum auswählen" change="dpStartHandleChange" class="sapUiSmallMarginBottom" showCurrentDateButton="true" />
+                        <TimePicker minutesStep="5" id="tpStart" valueFormat="HH:mm" displayFormat="HH:mm" change="tpStartHandleChange" class="sapUiSmallMarginBottom" />
+                    </m:FlexBox>
+                    <m:FlexBox alignItems="Center" justifyContent="Center">
+                        <DatePicker id="dpEnd" valueFormat="yyyy-MM-dd" displayFormat="dd.MM.yyyy" placeholder="End Datum auswählen" change="dpEndHandleChange" class="sapUiSmallMarginBottom sapUiTinyMarginEnd" showCurrentDateButton="true" />
+                        <TimePicker minutesStep="5" id="tpEnd" valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Endzeit wählen" change="tpEndHandleChange" class="sapUiSmallMarginBottom" />
+                    </m:FlexBox>
+                </m:FlexBox>
+                <Table id="allRooms" inset="false" growing="true" growingScrollToLoad="true" alternateRowColors="true" items="{path: 'db>/ROOMS'}">
+                    <columns>
+                        <Column>
+                            <Label text="Raumnummer" />
+                        </Column>
+                        <Column>
+                            <Label text="Raumbeschreibung" />
+                        </Column>
+                        <Column>
+                            <Label text="Eigenschaften" />
+                        </Column>
+                        <Column>
+                            <Label text="Kapazität" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Navigation" press="onRoomSelected">
+                            <Text id="roomumber" text="{db>roomnumber}" />
+                            <Text text="{db>roomdescritpion}" />
+                            <Text text="{db>roomspecials}" />
+                            <Text text="{db>roomcapacity}" />
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <m:FlexBox alignItems="Center" justifyContent="End" class="sapUiSmallMarginTop">
+                    <Button press="onReservation" text="Ausgewählten Raum reservieren!" />
+                </m:FlexBox>
+            </l:BlockLayoutCell>
+        </m:items>
+    </m:FlexBox>
+    <Text id="tChosenRoom" visible="false" />
+</mvc:View>

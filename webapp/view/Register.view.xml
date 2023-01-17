@@ -1,0 +1,17 @@
+<mvc:View controllerName="reservierungssystem.controller.Register" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:m="sap.m">
+    <m:FlexBox alignItems="Center" justifyContent="Center">
+        <m:items>
+            <l:BlockLayoutCell title="Register" titleAlignment="Center" class="sapUiLargeMarginTop">
+                <Input type="Email" placeholder="Email" id="rEmail" />
+                <Input type="Password" placeholder="Password" id="rPassword" />
+                <Input type="Password" placeholder="Repeat Password" id="rReapeatPassword" />
+                <m:FlexBox alignItems="Baseline" justifyContent="SpaceBetween">
+                    <m:items>
+                        <Button text="Register" type="Accept" press="onRegister" />
+                        <Button text="Zur Anmeldung!" type="Default" press="goToLogin" />
+                    </m:items>
+                </m:FlexBox>
+            </l:BlockLayoutCell>
+        </m:items>
+    </m:FlexBox>
+</mvc:View>

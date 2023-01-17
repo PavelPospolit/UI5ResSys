@@ -1,0 +1,10 @@
+#__xmlview0--LoginButton-BDI-content{
+    font-size: 1vw;
+}
+#__button1-inner{
+    float: right;
+}
+#application-reservierungssystem-display-component---Homepage--tChosenRes, 
+#application-reservierungssystem-display-component---Reservation--tChosenRoom{
+    visibility: hidden;
+}

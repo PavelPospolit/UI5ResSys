@@ -1,0 +1,176 @@
+{
+    "_version": "1.42.0",
+    "sap.app": {
+        "id": "reservierungssystem",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{Reservierungssystem}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.7.5",
+            "toolsId": "942bde35-0010-49b0-b15e-f4e0c4b0ef43"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "srv": {
+                "uri": "/srv",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.102.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "reservierungssystem.i18n.i18n",
+                    "async": true,
+                    "supportedLocales": [
+                        ""
+                    ],
+                    "fallbackLocale": ""
+                }
+            },
+            "db": {
+                "preload": true,
+                "dataSource": "srv",
+                "settings": {
+                    "synchronizationMode": "None"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "reservierungssystem.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteView1",
+                    "pattern": "",
+                    "target": "TargetView1"
+                },
+                {
+                    "name": "login",
+                    "pattern": "login",
+                    "target": "login"
+                },
+                {
+                    "name": "register",
+                    "pattern": "register",
+                    "target": "register"
+                },
+                {
+                    "name": "homepage",
+                    "pattern": "homepage",
+                    "target": "homepage"
+                },
+                {
+                    "name": "reservation",
+                    "pattern": "reservation",
+                    "target": "reservation"
+                }
+            ],
+            "targets": {
+                "TargetView1": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "View1",
+                    "viewName": "View1"
+                },
+                "login": {
+                    "viewId": "Login",
+                    "viewName": "Login"
+                },
+                "register": {
+                    "viewId": "Register",
+                    "viewName": "Register"
+                },
+                "homepage": {
+                    "viewId": "Homepage",
+                    "viewName": "Homepage"
+                },
+                "reservation": {
+                    "viewId": "Reservation",
+                    "viewName": "Reservation"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "reservierungssystem.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

@@ -1,0 +1,58 @@
+<mvc:View xmlns:cards="sap.f.cards" controllerName="reservierungssystem.controller.Homepage" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:m="sap.m">
+    <Toolbar>
+        <Button text="Homepage" enabled="false" />
+        <Button text="Reservation" press="onNavToReservation" />
+        <ToolbarSpacer />
+        <Button text="Ausloggen!" type="Reject" press="onLogOut" />
+    </Toolbar>
+
+    <m:FlexBox alignItems="Center" justifyContent="Center">
+        <m:items>
+            <l:BlockLayoutCell id="homaPageTitle" titleAlignment="Center" class="sapUiLargeMarginTop">
+                <Title text="My Reservations: " level="H1" class="sapUiSmallMarginTopBottom" />
+                <Table id="myReservations" inset="false" growing="true" growingScrollToLoad="true" alternateRowColors="true" items="{
+                    path: 'db>/RESERVATIONS'
+                    }">
+                    <columns>
+                        <Column>
+                            <Label text="MitarbeiterID" />
+                        </Column>
+                        <Column>
+                            <Label text="ReservierungsID" />
+                        </Column>
+                        <Column>
+                            <Label text="Raumnummer" />
+                        </Column>
+                        <Column>
+                            <Label text="Startdatum" />
+                        </Column>
+                        <Column>
+                            <Label text="Startzeit" />
+                        </Column>
+                        <Column>
+                            <Label text="Enddatum" />
+                        </Column>
+                        <Column>
+                            <Label text="Endezeit" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Active" press="handleItemClick">
+                            <Text text="{db>employeeid}" />
+                            <Text text="{db>reservationid}" />
+                            <Text text="{db>roomnumber}" />
+                            <Text text="{path:'db>starting_date', type: 'sap.ui.model.type.Date', formatOptions:{pattern:'dd.MM.yyyy'}}" />
+                            <Text text="{path: 'db>starting_time', type: 'sap.ui.model.odata.type.Time', formatOptions: { pattern : 'HH:mm' }}" />
+                            <Text text="{path: 'db>ending_date', type: 'sap.ui.model.type.Date', formatOptions:{pattern:'dd.MM.yyyy'}}" />
+                            <Text text="{path: 'db>ending_time_', type: 'sap.ui.model.odata.type.Time', formatOptions: { pattern : 'HH:mm' }}" />
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <m:FlexBox alignItems="Center" justifyContent="End" class="sapUiSmallMarginTop">
+                    <Button press="onCancelReservation" text="Reservierung Abbrechen!" />
+                </m:FlexBox>
+            </l:BlockLayoutCell>
+        </m:items>
+    </m:FlexBox>
+    <Text id="tChosenRes" visible="false" />
+</mvc:View>

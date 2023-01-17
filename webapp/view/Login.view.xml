@@ -1,0 +1,16 @@
+<mvc:View controllerName="reservierungssystem.controller.Login" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns:m="sap.m">
+    <m:FlexBox alignItems="Center" justifyContent="Center">
+        <m:items>
+            <l:BlockLayoutCell title="Login" titleAlignment="Center" class="sapUiLargeMarginTop">
+                <Input type="Email" placeholder="Email" id="emailInput" />
+                <Input type="Password" placeholder="Password" id="passwordInput" submit="onLogIn" />
+                <m:FlexBox alignItems="Baseline" justifyContent="SpaceBetween">
+                    <m:items>
+                        <Button text="Login" type="Accept" press="onLogIn" />
+                        <Button text="Zur Registrierung!" type="Default" press="goToRegister" />
+                    </m:items>
+                </m:FlexBox>
+            </l:BlockLayoutCell>
+        </m:items>
+    </m:FlexBox>
+</mvc:View>

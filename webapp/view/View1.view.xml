@@ -1,0 +1,7 @@
+<mvc:View controllerName="reservierungssystem.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+    <Page id="page">
+        <content>
+            <mvc:XMLView viewName="reservierungssystem.view.Login" />
+        </content>
+    </Page>
+</mvc:View>
